@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exam</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+     <!-- izotoast -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+     integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css"
+     integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg=="
+     crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+    <div class="container-fluid shadow card">
+        <div class="examDuration d-flex justify-content-end">
+            <span><i class="uil uil-stopwatch"></i></span>
+        </div>
+
+        <div class="container">
+            <div class="questionSection">
+                <form id="examForm">
+                    <div class="studentQuestion">
+                        <% if (context.examQuestions) { %>
+                            <% context.examQuestions.forEach((examQuestions, questionIndex) => { %>
+                                <div class="questionnaire-page" id="question<%= questionIndex + 1 %>">
+                                    <div class="question text-success mb-5">
+                                        <h5>Question <%= questionIndex + 1 %>: <br> <br> <%= examQuestions.question %></h5>
+                                    </div>
+                                    <div class="options">
+                                        <% examQuestions.options.forEach((option, optionIndex) => { %>
+                                            <h6><span><%= String.fromCharCode(65 + optionIndex) + '. ' + option %> </span></h6>
+                                        <% }) %>                                            
+                                        <div class="tickAnswer">
+                                            <% for (var i = 0; i < examQuestions.options.length; i++) { %>
+                                                <p><%= String.fromCharCode(65 + i) %> <span><input class="form-check-input me-5" type="radio" name="question<%= questionIndex + 1 %>" id="radio<%= questionIndex + 1 %><%= i + 1 %>" value="<%= examQuestions.options[i] %>" onchange="updateAnsweredQuestions(<%= questionIndex + 1 %>)"></span></p>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    </div>
+
+                    <div class="buttonSection">
+                        <div class="buttonArea">
+                            <% if (context.examQuestions) { %>
+                                <% context.examQuestions.forEach((examQuestions, questionIndex) => { %>
+                                    <button onclick="showQuestion(<%= questionIndex + 1 %>)" type="button" class="btn btn-primary" id="button<%= questionIndex + 1 %>"><%= questionIndex + 1 %></button>
+                                <% }) %>
+                            <% } %>
+                        </div>
+                        <input type="hidden" name="applicantId" value="<%= applicant._id %>">
+                        <div class="submitbtn">
+                            <button type="submit" name="submit" class="btn btn-danger fw-bold">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+ <!-- question buttons  -->
+ <script>
+    let currentQuestion = 1;
+    let answeredQuestions = new Set();
+
+    function showQuestion(questionNumber) {
+        document.getElementById(`question${currentQuestion}`).style.display = 'none';
+        currentQuestion = questionNumber;
+        document.getElementById(`question${currentQuestion}`).style.display = 'block';
+        updateButtonStyles();
+    }
+
+    // Show the first question when the page loads
+    window.addEventListener('load', function() {
+        showQuestion(1);
+    });
+
+    function updateButtonStyles() {
+        for (let i = 1; i <= <%= context.examQuestions.length %>; i++) {
+            const button = document.getElementById(`button${i}`);
+            if (answeredQuestions.has(i)) {
+                button.classList.add('answered');
+                button.classList.remove('unanswered');
+            } else {
+                button.classList.add('unanswered');
+                button.classList.remove('answered');
+            }
+        }
+    }
+
+    function updateAnsweredQuestions(questionNumber) {
+        answeredQuestions.add(questionNumber);
+        updateButtonStyles();
+    }
+
+
+    // Initialize button styles
+    updateButtonStyles();
+</script>
+<script>
+    const context = <%- JSON.stringify(context) %>;
+</script>
+
+
+
+<script src="/validations/exam.js"></script>
+<!-- !-- Izitoast  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.js"
+integrity="sha512-OmBbzhZ6lgh87tQFDVBHtwfi6MS9raGmNvUNTjDIBb/cgv707v9OuBVpsN6tVVTLOehRFns+o14Nd0/If0lE/A=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <title>Dashboard</title>
+
+    <%- include('./snippets/adminHeader.ejs') %>
+  </head>
+  <body>
+
+    <%- include('./snippets/svg.ejs') %>
+
+    <div class="container-fluid">
+      <div class="row">
+       <%- include('./snippets/adminSidebar.ejs') %>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="text-center mt-5 text-primary">
+                <h4 class="fw-bold fs-4 display-1">Available Jobs</h4>
+            </div>
+            <div class="text-end">
+                <a href="/admin/post-job"><button class="btn btn-sm btn-outline-danger"><i class="fa fa-plus"></i>Post Job</button></a>
+            </div>
+            <table id="example" class="table small table-sm table-striped mt-5" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Educational Requirements</th>
+                        <th>Job Experience</th>
+                        <th>Required Skills</th>
+                        <!-- <th>Action</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <% context %>
+                    <% if (context.availableJobs) { %>
+                     <% context.availableJobs.forEach(availableJob => { %>
+                        <tr>
+                            <td><%= availableJob.jobTitle%></td>
+                            <td><%= availableJob.eduRequirement%></td>
+                            <td><%= availableJob.jobExperience%></td>
+                            <td><%= availableJob.skills%></td>
+                            <!-- <td>
+                                <div class="d-flex">
+                                    <button class="btn btn-outline-danger btn-sm me-2 fw-bold"><i class="fa fa-trash"></i></button>
+                                    <button class="btn btn-outline-primary btn-sm me-2 fw-bold"><i class="fa fa-pen"></i></button>
+                                </div>
+                            </td> -->
+                        </tr>
+                     <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </main>
+      </div>
+    </div>
+
+    <%- include('./snippets/adminScripts.ejs') %>
+   
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Job Recruitment</title>
+       <%- include('./snippets/header.ejs') %>
+   </head>
+
+   <body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+        <%- include('./snippets/navbar.ejs') %>
+        <!-- Header End -->
+    </header>
+    <main>
+
+        <!-- slider Area Start-->
+        <div class="slider-area ">
+            <!-- Mobile Menu -->
+            <div class="slider-active">
+                <div class="single-slider slider-height d-flex align-items-center" data-background="assets/img/hero/h1_hero.jpg">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-9 col-md-10">
+                                <div class="hero__caption">
+                                    <h1>Find the most exciting civil service job Vacancies</h1>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- slider Area End-->
+         
+        <!-- Our Services Start -->
+        <div class="our-services mt-5">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center">
+                            <span>JOB VACANCIES</span>
+                            <h2>Job Sectors </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-contnet-center">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-helmet"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5>Agriculture</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-high-tech"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5>Information Technology</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-real-estate"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5>Education</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-content"></span>
+                            </div>
+                            <div class="services-cap">
+                               <h5>Works</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Our Services End -->
+
+           <!-- How  Apply Process Start-->
+        <div class="apply-process-area apply-bg pt-150 pb-150" data-background="assets/img/gallery/how-applybg.png">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle white-text text-center">
+                            <span>Apply process</span>
+                            <h2> How it works</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- Apply Process Caption -->
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-process text-center mb-30">
+                            <div class="process-ion">
+                                <span class="flaticon-search"></span>
+                            </div>
+                            <div class="process-cap">
+                               <h5>1. Search a job</h5>
+                               <p>Search for available jobs and apply with valid credentials.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-process text-center mb-30">
+                            <div class="process-ion">
+                                <span class="flaticon-curriculum-vitae"></span>
+                            </div>
+                            <div class="process-cap">
+                               <h5>2. Apply for job</h5>
+                               <p>Apply and check your email for possible CBT exam if stage 1 is passsed.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-process text-center mb-30">
+                            <div class="process-ion">
+                                <span class="flaticon-tour"></span>
+                            </div>
+                            <div class="process-cap">
+                               <h5>3. Write CBT exam</h5>
+                               <p>Login details for CBT exam wil be sent to you once stage 2 is passed.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+        <!-- How  Apply Process End-->
+       
+        <!-- Featured_job_start -->
+        <section class="featured-job-area mt-4 mb-4">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center">
+                            <span>Featured Job</span>
+                            <h2>Available Jobs</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Job Card 1 -->
+                     <% context %>
+                     <% if (context.availableJobs) { %>
+                      <% context.availableJobs.forEach(availableJob => { %>
+                        <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                            <div class="card shadow">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold text-center text-danger"><%= availableJob.jobTitle%></h5>
+                                    <ul class="list-unstyled">
+                                        <li><strong>Educational Requirements:</strong> <%= availableJob.eduRequirement%> </li>
+                                        <li><strong>Experience:</strong> <%= availableJob.jobExperience%> </li>
+                                        <li><strong>Skills:</strong> <%= availableJob.skills%> </li>
+                                    </ul>
+                                    <a href="application-form/?job_id=<%= availableJob._id%>"><button class="btn btn-primary w-100 btn-sm mt-3">Apply</button></a>
+                                </div>
+                            </div>
+                        </div>
+                      <% }) %>
+                     <% } %>
+                </div>
+            </div>
+        </section>
+        <!-- Featured_job_end -->
+
+    </main>
+    <footer>
+        <!-- Footer Start-->
+        <%- include('./snippets/footer.ejs') %>
+        <!-- Footer End-->
+    </footer>
+
+	
+    <%- include('./snippets/scripts.ejs') %>
+    </body>
+</html>
+

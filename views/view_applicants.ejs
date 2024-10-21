@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <title>All applications</title>
+
+    <%- include('./snippets/adminHeader.ejs') %>
+  </head>
+  <body>
+
+    <%- include('./snippets/svg.ejs') %>
+
+    <div class="container-fluid">
+      <div class="row">
+       <%- include('./snippets/adminSidebar.ejs') %>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="text-center mt-5 text-primary">
+                <h4 class="fw-bold fs-4 display-1">All Applicants</h4>
+            </div>
+            <table id="example" class="table small table-sm table-striped mt-5" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Job Applied For</th>
+                        <th>Qualification</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <% context %>
+                  <% if (context.applicants) { %>
+                   <% context.applicants.forEach(applicant => { %>
+                    <tr>
+                      <td><%= applicant.fullName %></td>
+                      <td><%= applicant.email %></td>
+                      <td><%= applicant.phone_no %></td>
+                      <td><%= applicant.job_id.jobTitle %></td>
+                      <td><%= applicant.qualification %></td>
+                      <td>
+                        <button type="button" onclick="return sendEmail('<%= applicant._id %>')" class="btn btn-outline-primary btn-sm me-2 fw-bold">Send email</button>
+                      </td>
+                  </tr>
+                   <% }) %>
+                  <% } %>
+                </tbody>
+            </table>
+        </main>
+      </div>
+    </div>
+
+    <%- include('./snippets/adminScripts.ejs') %>
+    <script src="/validations/emailConfig.js"></script>
+   
+  </body>
+</html>

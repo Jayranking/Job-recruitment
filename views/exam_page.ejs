@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exam Page</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+    
+        <div class="container pt-5">
+            <div class="examDuration">
+                <span><i class="uil uil-stopwatch"></i></span>
+                <h5>Time Given: 60minutes.</h5>
+            </div>
+    
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12 mb-3">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="instruction">
+                                <h5 class="fw-bold text-danger">Instructions</h5>
+                                <div class="steps">
+                                    <p> <span><i class="uil uil-arrow-right"></i></span>
+                                        Answer carefully and submit when done
+                                    </p>
+                                    <p><span><i class="uil uil-arrow-right"></i></span>
+                                        Be aware of the total time allocated for the exam
+                                    </p>
+                                    <p><span><i class="uil uil-arrow-right"></i></span>
+                                        Confirm that your answers are submitted before the end of the exam
+                                    </p>
+                                    <p><span><i class="uil uil-arrow-right"></i></span>
+                                        Contact technical support if you encounter any issues during the exam
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <a href="/exam?applicantId=<%= context.applicant._id %>"><button class="btn btn-outline-primary">Start Exam <i class="fa fa-pen"></i></button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5 col-md-6 col-sm-12 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="instruction">
+                                <h5 class="fw-bold text-danger">Instructions</h5>
+                                <div class="steps mb-5">
+                                    <p> <span><i class="uil uil-arrow-right"></i></span>
+                                        Take practice is not same with Exam question
+                                    </p>
+                                    <p><span><i class="uil uil-arrow-right"></i></span>
+                                        Be aware of time allocated for the practice
+                                    </p>
+                                    <p><span><i class="uil uil-arrow-right"></i></span>
+                                        Confirm your answers before submitting
+                                    </p>
+                                    
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <button class="btn btn-outline-danger" disabled>Take Practice <i class="fa fa-book"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+   
+    
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

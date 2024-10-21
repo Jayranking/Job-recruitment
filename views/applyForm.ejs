@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Job Application Form</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- izotoast -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+    integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css"
+    integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="card-title text-center mb-4 fw-bold text-danger">Job Application Form</h4>
+                    <form id="applyForm" enctype="multipart/form-data">
+                        <!-- Full Name -->
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" name="fullName"  placeholder="Enter your full name">
+                            <div class="fullNameErr text-danger text-center"></div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="form-group mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                            <div class="emailErr text-danger text-center"></div>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="form-group mb-3">
+                            <input type="tel" class="form-control" name="phone_no" placeholder="Enter your phone number">
+                            <div class="phone_noErr text-danger text-center"></div>
+                        </div>
+
+                        <!-- Education -->
+                        <div class="form-group mb-3">
+                            <select class="form-control" name="qualification">
+                                <option value="" disabled selected>Select qualification</option>
+                                <option value="Bachelor Degree">Bachelor Degree</option>
+                                <option value="Master Degree">Master Degree</option>
+                                <option value="phd">PhD</option>
+                                <option value="diploma">Diploma</option>
+                                <option value="others">Others</option>
+                            </select>
+                            <div class="qualificationErr text-danger text-center"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="hidden" value="<%= context.job._id %>" class="form-control" name="job_id">
+                        </div>
+
+                        <!-- Resume Upload -->
+                        <div class="form-group mb-4">
+                            <label for="resume">Upload Resume</label>
+                            <input type="file" class="form-control" name="resume">
+                            <div class="resumeErr text-center text-danger"></div>
+                        </div>
+
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="/validations/application.js"></script>
+
+<!-- Izitoast -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.js"
+integrity="sha512-OmBbzhZ6lgh87tQFDVBHtwfi6MS9raGmNvUNTjDIBb/cgv707v9OuBVpsN6tVVTLOehRFns+o14Nd0/If0lE/A=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</body>
+</html>

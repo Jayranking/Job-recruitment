@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+  <head>
+    <title>Upload question</title>
+
+    <%- include('./snippets/adminHeader.ejs') %>
+  </head>
+  <body>
+
+    <%- include('./snippets/svg.ejs') %>
+
+    <div class="container-fluid">
+      <div class="row">
+       <%- include('./snippets/adminSidebar.ejs') %>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="container-fluid mb-5">
+                <div class="text-end mt-3">
+                     <button class="btn btn-outline-primary mb-2 btn-sm me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Upload Multiple Questions <i class="bi bi-cloud-upload"></i></button>
+                 </div>
+                 <div class="card mt-4 col-md-8 mx-auto shadow">
+                     <div class="card-body">
+                          <div class="">
+                               <form id="questionForm">
+                                    <div class="">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Exam Question" id="floatingTextarea" style="height: 150px;" name="question"></textarea>
+                                                <label for="floatingTextarea">Enter Exam Question</label>
+                                            </div>
+                                            <div class="questionErr text-danger"></div>
+                                    </div>
+           
+                               <div class="">
+                                    <h6 class=" mt-3 text-primary">Enter Options of the Above Question</h6>
+                                    <div class="row">
+                                         <div class="col-sm-12 col-xl-6">
+                                              <div class="form-floating mb-3">
+                                                   <input type="text" class="form-control" id="floatingInput" placeholder="Option A" name="optionA">
+                                                   <label for="floatingInput">Option A </label>
+                                                   <div class="optionAErr text-danger"></div>
+                                              </div>
+                                         </div>
+           
+                                         <div class="col-sm-12 col-xl-6">
+                                              <div class="form-floating mb-3">
+                                                   <input type="text" class="form-control" id="floatingInput" placeholder="Option B" name="optionB">
+                                                   <label for="floatingInput">Option B </label>
+                                                   <div class="optionBErr text-danger"></div>
+                                              </div>
+                                         </div>
+                                    </div>
+           
+                                    <div class="row">
+                                         <div class="col-sm-12 col-xl-6">
+                                              <div class="form-floating mb-3">
+                                                   <input type="text" class="form-control" id="floatingInput" placeholder="Option C" name="optionC">
+                                                   <label for="floatingInput">Option C </label>
+                                                   <div class="optionCErr text-danger"></div>
+                                              </div>
+                                         </div>
+           
+                                         <div class="col-sm-12 col-xl-6">
+                                              <div class="form-floating mb-3">
+                                                   <input type="text" class="form-control" id="floatingInput" placeholder="Option D" name="optionD">
+                                                   <label for="floatingInput">Option D </label>
+                                                   <div class="optionDErr text-danger"></div>
+                                              </div>
+                                         </div>
+                                    </div>
+                               </div>
+           
+                               <div class="mb-2">
+                                    <h6 class=" mt-3 text-primary">Pick Correct Answer of the Above Question</h6>
+                                    <div class="row">
+                                         <div class="col-lg-3 col-md-6 col-sm">
+                                             <div class="form-check">
+                                                 <input class="form-check-input form-check-input-lg" type="radio" name="option" value="A">
+                                                 <label class="form-check-label" for="optionA">A</label>
+                                             </div>
+                                         </div>
+                                         <div class="col-lg-3 col-md-6 col-sm">
+                                             <div class="form-check">
+                                                 <input class="form-check-input form-check-input-lg" type="radio" name="option" value="B">
+                                                 <label class="form-check-label" for="optionB">B</label>
+                                             </div>
+                                         </div>
+                                         <div class="col-lg-3 col-md-6 col-sm">
+                                             <div class="form-check">
+                                                 <input class="form-check-input form-check-input-lg" type="radio" name="option" value="C">
+                                                 <label class="form-check-label" for="optionC">C</label>
+                                             </div>
+                                         </div>
+                                         <div class="col-lg-3 col-md-6 col-sm">
+                                             <div class="form-check">
+                                                 <input class="form-check-input form-check-input-lg" type="radio" name="option" value="D">
+                                                 <label class="form-check-label" for="optionD">D</label>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="correctAnsErr text-danger"></div>
+                               </div>
+ 
+                                <button type="submit" class="btn btn-primary w-100">Submit</button>
+                               
+                               </form>
+                           </div>
+                     </div>
+                 </div>
+                 
+                 <!-- Modal -->
+                 <div class="modal fade ce" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                         <div class="modal-body">
+                             <form action="/upload" class="dropzone" id="myDropzone">
+                                 <div class="dz-message" data-dz-message>
+                                     <span>Drop Excel file here or click to upload <i class="bi bi-cloud-upload"></i>
+                                     </span>
+                                 </div>
+                             </form> 
+                         </div>
+                         <div class="modal-footer d-flex justify-content-between">
+                             <button class="btn btn-outline-secondary btn-sm">Download Excel sheet <i class="bi bi-cloud-download"></i></button>
+                             <button class="btn btn-outline-success btn-sm">Upload Excel sheet <i class="bi bi-cloud-upload"></i></button>
+                         </div>
+                     </div>
+                     </div>
+                 </div>
+             </div>
+        </main>
+      </div>
+    </div>
+
+    <%- include('./snippets/adminScripts.ejs') %>
+    <script src="/validations/question.js"></script>
+    <script>
+        // Initialize Dropzone
+        Dropzone.autoDiscover = false;
+    
+        $(document).ready(function () {
+            var myDropzone = new Dropzone("#myDropzone", {
+                url: "/upload", // Specify the URL for file uploads
+                acceptedFiles: ".xlsx, .xls", // Limit accepted file types to Excel files
+                maxFilesize: 5, // Set maximum file size in MB
+                dictDefaultMessage: "Drop Excel file here or click to upload.",
+                init: function () {
+                    this.on("success", function (file, response) {
+                        // Handle successful file upload
+                        console.log(response);
+                    });
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
